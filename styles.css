@@ -1,0 +1,140 @@
+ body {
+   position: relative;
+   height: 100%;
+   background-color: #f1f1f1;
+ }
+
+ footer {
+   -ms-display: flex;
+   -moz-display: flex;
+   -webkit-display: flex;
+   display: flex;
+
+   width: 100%; /* with flexbox it's important to set the width
+                   before aligining items for containers (like footer)
+                   that inherit the width of their children */
+
+   justify-content: center;
+
+   position: fixed;
+   bottom: 0;
+
+   padding: 20px 0;
+ }
+
+footer h1 {
+  color: skyBlue;
+}
+
+a {
+  text-decoration: none;
+  color: tomato;
+}
+
+
+a:hover {
+  color: red;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* EXAMPLE #2 FLEX LAYOUT */
+
+.flex-container {
+  background-color: tomato;
+  display: flex;
+  /* we define the flow direction and if we allow the items to wrap
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+  /* flex-direction: row-reverse; row, column, column-reverse, row-reverse.
+                                  flex direction allows you to quickly change the
+                                  layout of your elms and also swap the configuration of the elms */
+  align-items: center;
+}
+
+.child {
+  color: white;
+  width: 33%;
+  /*align-self: center; this will work in place of align-items however the
+                        intent of align self is to give alignment across the
+                        main axis for a single child element*/
+}
+
+.child:first-child {
+  background-color: skyBlue;
+  flex-shrink: 3;
+}
+
+.child:nth-child(2) {
+  background-color: red;
+}
+
+.child:nth-child(3) {
+  background-color: orange;
+}
+
+/* NAVIGATION EXAMPLE */
+
+/* Large */
+.navigation {
+  list-style: none;
+  margin: 0;
+
+  background: deepskyblue;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-direction: row; /* by default flexbox sets flex direction to row.
+                                  This is only for visual representation of that */
+
+  justify-content: flex-end; /* aligns navigation to the right of the
+                                container or the 'end' of the flex container */
+
+  margin-bottom: 50px;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
+}
+
+@media all and (max-width: 800px) {
+  .navigation {
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .navigation {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .navigation a {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .navigation li:last-of-type a {
+    border-bottom: none;
+  }
+}
